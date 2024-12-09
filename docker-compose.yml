@@ -1,7 +1,7 @@
 version: '3.6'
 services:
   gitlab:
-    image: codesec/gitlab-ce:latest
+    image: codesec/gitlab-ce:17.4.5-ce.0
     container_name: gitlab
     restart: always
     hostname: 'gitlab.codesec.me'
