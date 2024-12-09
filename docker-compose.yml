@@ -1,0 +1,20 @@
+version: '3.6'
+services:
+  gitlab:
+    image: codesec/gitlab-ce:latest
+    container_name: gitlab
+    restart: always
+    hostname: 'gitlab.codesec.me'
+    environment:
+      GITLAB_OMNIBUS_CONFIG: |
+        external_url 'http://gitlab.codesec.me'
+        gitlab_rails['gitlab_shell_ssh_port'] = 9003
+    ports:
+      - '9001:9001'
+      - '9002:443'
+      - '9003:22'
+    volumes:
+      - '$GITLAB_HOME/config:/etc/gitlab'
+      - '$GITLAB_HOME/logs:/var/log/gitlab'
+      - '$GITLAB_HOME/data:/var/opt/gitlab'
+    shm_size: '256m'
